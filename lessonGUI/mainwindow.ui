@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>570</width>
-    <height>656</height>
+    <width>1042</width>
+    <height>765</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,14 +22,14 @@
         <item>
          <widget class="QPushButton" name="pushButton">
           <property name="text">
-           <string>hello</string>
+           <string>Hello</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_2">
           <property name="text">
-           <string>clear</string>
+           <string>View Definition</string>
           </property>
          </widget>
         </item>
@@ -51,6 +51,30 @@
       <item>
        <widget class="QTextEdit" name="textEdit"/>
       </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Definition Editor</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="plainTextEdit">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>43</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="textEdit_2"/>
+        </item>
+       </layout>
+      </item>
      </layout>
     </item>
    </layout>
@@ -60,7 +84,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>570</width>
+     <width>1042</width>
      <height>38</height>
     </rect>
    </property>
@@ -135,23 +159,13 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>textEdit</tabstop>
+  <tabstop>plainTextEdit</tabstop>
+  <tabstop>textEdit_2</tabstop>
+ </tabstops>
  <resources/>
- <connections>
-  <connection>
-   <sender>pushButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>textEdit</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>123</x>
-     <y>166</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>274</x>
-     <y>207</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
