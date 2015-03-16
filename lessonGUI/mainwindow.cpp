@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -48,6 +49,28 @@ void MainWindow::on_pushButton_3_clicked()
 /*saves the current lesson*/
 void MainWindow::on_pushButton_4_clicked()
 {
+    //QString lesson = QString::fromUtf8(ui->textEdit->toPlainText());
+    QString lesson = ui->textEdit->toPlainText();
+    QString filename=QFileDialog::getSaveFileName(this, tr("Save File"), "C://",
+                                                    "All files (*.*);;Text File (*.txt);;Unicode File (*.u8)"  /*file filter*/
+                                                    );
+    if(filename.isEmpty())
+        return;
+    else{
+        QFile file(filename);
+        if(!file.open(QIODevice::WriteOnly)){
+            QMessageBox::information(this, tr("unable to save"),
+                                     file.errorString());
+            return;
+        }
+        QTextStream out(&file);
+        // SET version??
+        //out.setGenerateByteOrderMark(true);
+        out.setCodec("UTF-8");
+        out << lesson << endl;
+        out.flush();
+        file.close();
+    }
 
 }
 

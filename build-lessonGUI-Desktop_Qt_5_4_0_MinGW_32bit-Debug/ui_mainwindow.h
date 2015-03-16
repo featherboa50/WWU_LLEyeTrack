@@ -18,7 +18,6 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -56,8 +55,6 @@ public:
     QTextEdit *textEdit_3;
     QTextEdit *textEdit_2;
     QMenuBar *menuBar;
-    QMenu *menuFile;
-    QMenu *menuEdit;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -155,10 +152,6 @@ public:
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1042, 38));
-        menuFile = new QMenu(menuBar);
-        menuFile->setObjectName(QStringLiteral("menuFile"));
-        menuEdit = new QMenu(menuBar);
-        menuEdit->setObjectName(QStringLiteral("menuEdit"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -168,16 +161,6 @@ public:
         MainWindow->setStatusBar(statusBar);
         QWidget::setTabOrder(pushButton_2, textEdit);
         QWidget::setTabOrder(textEdit, textEdit_2);
-
-        menuBar->addAction(menuFile->menuAction());
-        menuBar->addAction(menuEdit->menuAction());
-        menuFile->addAction(actionNew);
-        menuFile->addAction(actionOpen_2);
-        menuFile->addAction(actionSave);
-        menuFile->addAction(actionClose);
-        menuEdit->addAction(actionCopy);
-        menuEdit->addAction(actionPaste);
-        menuEdit->addAction(actionCut);
 
         retranslateUi(MainWindow);
 
@@ -200,8 +183,6 @@ public:
         pushButton_2->setText(QApplication::translate("MainWindow", "View Definition", 0));
         pushButton->setText(QApplication::translate("MainWindow", "Save Definition", 0));
         label->setText(QApplication::translate("MainWindow", "Definition Editor", 0));
-        menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
-        menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", 0));
     } // retranslateUi
 
 };
