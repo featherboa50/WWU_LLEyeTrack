@@ -20,7 +20,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
@@ -46,13 +45,15 @@ public:
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
-    QPushButton *pushButton;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
     QPushButton *pushButton_2;
+    QPushButton *pushButton;
     QSpacerItem *verticalSpacer;
     QTextEdit *textEdit;
     QVBoxLayout *verticalLayout_7;
     QLabel *label;
-    QPlainTextEdit *plainTextEdit;
+    QTextEdit *textEdit_3;
     QTextEdit *textEdit_2;
     QMenuBar *menuBar;
     QMenu *menuFile;
@@ -93,15 +94,25 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton_3 = new QPushButton(centralWidget);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(pushButton_3);
+
+        pushButton_4 = new QPushButton(centralWidget);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+
+        verticalLayout->addWidget(pushButton_4);
 
         pushButton_2 = new QPushButton(centralWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
         verticalLayout->addWidget(pushButton_2);
+
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        verticalLayout->addWidget(pushButton);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -123,11 +134,11 @@ public:
 
         verticalLayout_7->addWidget(label);
 
-        plainTextEdit = new QPlainTextEdit(centralWidget);
-        plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
-        plainTextEdit->setMaximumSize(QSize(16777215, 43));
+        textEdit_3 = new QTextEdit(centralWidget);
+        textEdit_3->setObjectName(QStringLiteral("textEdit_3"));
+        textEdit_3->setMaximumSize(QSize(16777215, 50));
 
-        verticalLayout_7->addWidget(plainTextEdit);
+        verticalLayout_7->addWidget(textEdit_3);
 
         textEdit_2 = new QTextEdit(centralWidget);
         textEdit_2->setObjectName(QStringLiteral("textEdit_2"));
@@ -155,10 +166,8 @@ public:
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
-        QWidget::setTabOrder(pushButton, pushButton_2);
         QWidget::setTabOrder(pushButton_2, textEdit);
-        QWidget::setTabOrder(textEdit, plainTextEdit);
-        QWidget::setTabOrder(plainTextEdit, textEdit_2);
+        QWidget::setTabOrder(textEdit, textEdit_2);
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuEdit->menuAction());
@@ -186,8 +195,10 @@ public:
         actionCopy->setText(QApplication::translate("MainWindow", "Copy", 0));
         actionPaste->setText(QApplication::translate("MainWindow", "Paste", 0));
         actionCut->setText(QApplication::translate("MainWindow", "Cut", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "Hello", 0));
+        pushButton_3->setText(QApplication::translate("MainWindow", "Open File", 0));
+        pushButton_4->setText(QApplication::translate("MainWindow", "Save File", 0));
         pushButton_2->setText(QApplication::translate("MainWindow", "View Definition", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "Save Definition", 0));
         label->setText(QApplication::translate("MainWindow", "Definition Editor", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", 0));
