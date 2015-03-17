@@ -21,10 +21,11 @@ MainWindow::~MainWindow()
 /*Finds the highlighted string in the dictionary and displays the info about it*/
 void MainWindow::on_pushButton_2_clicked()
 {
+    QString d = ui->textEdit->textCursor().selectedText();
     ui->textEdit_2->clear();
     ui->textEdit_3->clear();
     ui->textEdit_2->append("Definition should show up");
-    ui->textEdit_3->append("Definition Name?");
+    ui->textEdit_3->append(d);
 }
 
 
