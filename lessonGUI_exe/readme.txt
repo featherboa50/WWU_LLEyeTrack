@@ -1,0 +1,1 @@
+Go into release folder and run the .exe

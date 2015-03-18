@@ -50,7 +50,8 @@ void MainWindow::on_pushButton_3_clicked()
 /*saves the current lesson*/
 void MainWindow::on_pushButton_4_clicked()
 {
-    //QString lesson = QString::fromUtf8(ui->textEdit->toPlainText());
+    //take all edited def and send to be written
+   // QString lesson = QString::fromUtf8(ui->textEdit->);
     QString lesson = ui->textEdit->toPlainText();
     QString filename=QFileDialog::getSaveFileName(this, tr("Save File"), "C://",
                                                     "All files (*.*);;Text File (*.txt);;Unicode File (*.u8)"  /*file filter*/
