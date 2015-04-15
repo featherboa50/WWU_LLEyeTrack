@@ -40,11 +40,9 @@ void MainWindow::on_pushButton_3_clicked()
                 );
     QFile file(filename);
     if(!file.open(QIODevice::ReadOnly))
-        QMessageBox::information(0, tr("error info"),file.errorString());
-
+        QMessageBox::information(0, tr("info"),file.errorString());
 
     QTextStream in(&file);
-    in.setCodec("UTF-8");
 
     ui->textEdit->setText(in.readAll());
 }
@@ -52,7 +50,8 @@ void MainWindow::on_pushButton_3_clicked()
 /*saves the current lesson*/
 void MainWindow::on_pushButton_4_clicked()
 {
-    //QString lesson = QString::fromUtf8(ui->textEdit->toPlainText());
+    //take all edited def and send to be written
+   // QString lesson = QString::fromUtf8(ui->textEdit->);
     QString lesson = ui->textEdit->toPlainText();
     QString filename=QFileDialog::getSaveFileName(this, tr("Save File"), "C://",
                                                     "All files (*.*);;Text File (*.txt);;Unicode File (*.u8)"  /*file filter*/
