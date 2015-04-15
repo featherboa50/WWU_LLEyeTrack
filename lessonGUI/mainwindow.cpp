@@ -1,3 +1,5 @@
+/*TODO:
+ *  actually get this to interact with the DB!!!!!*/
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFile>
@@ -49,11 +51,11 @@ void MainWindow::on_pushButton_3_clicked()
     ui->textEdit->setText(in.readAll());
 }
 
-/*saves the current lesson*/
+/*saves the current lesson from the textEdit window*/
 void MainWindow::on_pushButton_4_clicked()
 {
-    //QString lesson = QString::fromUtf8(ui->textEdit->toPlainText());
-    QString lesson = ui->textEdit->toPlainText();
+    QString lesson = ui->textEdit->toHtml();
+
     QString filename=QFileDialog::getSaveFileName(this, tr("Save File"), "C://",
                                                     "All files (*.*);;Text File (*.txt);;Unicode File (*.u8)"  /*file filter*/
                                                     );
@@ -70,7 +72,7 @@ void MainWindow::on_pushButton_4_clicked()
         // SET version??
         //out.setGenerateByteOrderMark(true);
         out.setCodec("UTF-8");
-        out << lesson << endl;
+        out << lesson;
         out.flush();
         file.close();
     }
