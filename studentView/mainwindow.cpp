@@ -17,13 +17,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-/* closes the program down*/
+
+
 void MainWindow::on_actionClose_triggered()
 {
     this->close();
 }
 
-/* opens a file(.txt,.u8) and displays*/
 void MainWindow::on_actionOpen_triggered()
 {
     QString filename=QFileDialog::getOpenFileName(
@@ -34,13 +34,9 @@ void MainWindow::on_actionOpen_triggered()
                 );
     QFile file(filename);
     if(!file.open(QIODevice::ReadOnly))
-        QMessageBox::information(0, tr("error info"),file.errorString());
-
+        QMessageBox::information(0, tr("info"),file.errorString());
 
     QTextStream in(&file);
-    in.setCodec("UTF-8");
 
     ui->textBrowser->setText(in.readAll());
-
-    /*start thread here for eyetracking?*/
 }
