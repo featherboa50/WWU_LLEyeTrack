@@ -27,13 +27,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_4">
-          <property name="text">
-           <string>Save File</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="pushButton_2">
           <property name="text">
            <string>View Definition</string>
@@ -85,6 +78,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="text">
+           <string>Save File</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QTextEdit" name="textEdit_2"/>
         </item>
        </layout>
@@ -99,7 +99,7 @@
      <x>0</x>
      <y>0</y>
      <width>1042</width>
-     <height>38</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
