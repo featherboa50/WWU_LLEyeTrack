@@ -21,10 +21,14 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_actionOpen_triggered();
 
-    void on_pushButton_3_clicked();
 
-    void on_pushButton_4_clicked();
+    void on_actionSave_triggered();
+
+    void on_actionLesson_triggered();
+
+    void on_actionStudent_triggered();
 
 private:
     Ui::MainWindow *ui;

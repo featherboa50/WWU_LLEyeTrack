@@ -23,14 +23,21 @@ void MainWindow::on_pushButton_2_clicked()
 {
     QString d = ui->textEdit->textCursor().selectedText();
     ui->textEdit_2->clear();
-    ui->textEdit_3->clear();
+    ui->word->clear();
     ui->textEdit_2->append("Definition should show up");
-    ui->textEdit_3->append(d);
+    ui->word->append(d);
 }
 
 
+
+/*saves the definition into the DB*/
+void MainWindow::on_pushButton_clicked()
+{
+
+}
+
 /*Opens a file and displays it in the main text area*/
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_actionOpen_triggered()
 {
     QString filename=QFileDialog::getOpenFileName(
                 this,
@@ -49,8 +56,9 @@ void MainWindow::on_pushButton_3_clicked()
     ui->textEdit->setText(in.readAll());
 }
 
+
 /*saves the current lesson*/
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_actionSave_triggered()
 {
     //QString lesson = QString::fromUtf8(ui->textEdit->toPlainText());
     QString lesson = ui->textEdit->toPlainText();
@@ -77,8 +85,13 @@ void MainWindow::on_pushButton_4_clicked()
 
 }
 
-/*saves the definition into the DB*/
-void MainWindow::on_pushButton_clicked()
+/*switch to lesson view*/
+void MainWindow::on_actionLesson_triggered()
+{
+
+}
+/*switch to student view*/
+void MainWindow::on_actionStudent_triggered()
 {
 
 }

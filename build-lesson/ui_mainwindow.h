@@ -18,9 +18,9 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
@@ -33,28 +33,22 @@ class Ui_MainWindow
 {
 public:
     QAction *actionOpen;
-    QAction *actionNew;
-    QAction *actionOpen_2;
     QAction *actionSave;
-    QAction *actionClose;
-    QAction *actionCopy;
-    QAction *actionPaste;
-    QAction *actionCut;
+    QAction *actionLesson;
+    QAction *actionStudent;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
-    QVBoxLayout *verticalLayout;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
-    QSpacerItem *verticalSpacer;
     QTextEdit *textEdit;
     QVBoxLayout *verticalLayout_7;
     QLabel *label;
-    QTextEdit *textEdit_3;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
+    QTextEdit *word;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton;
     QTextEdit *textEdit_2;
     QMenuBar *menuBar;
+    QMenu *menuFile;
+    QMenu *menuView;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -65,20 +59,16 @@ public:
         MainWindow->resize(1042, 765);
         actionOpen = new QAction(MainWindow);
         actionOpen->setObjectName(QStringLiteral("actionOpen"));
-        actionNew = new QAction(MainWindow);
-        actionNew->setObjectName(QStringLiteral("actionNew"));
-        actionOpen_2 = new QAction(MainWindow);
-        actionOpen_2->setObjectName(QStringLiteral("actionOpen_2"));
         actionSave = new QAction(MainWindow);
         actionSave->setObjectName(QStringLiteral("actionSave"));
-        actionClose = new QAction(MainWindow);
-        actionClose->setObjectName(QStringLiteral("actionClose"));
-        actionCopy = new QAction(MainWindow);
-        actionCopy->setObjectName(QStringLiteral("actionCopy"));
-        actionPaste = new QAction(MainWindow);
-        actionPaste->setObjectName(QStringLiteral("actionPaste"));
-        actionCut = new QAction(MainWindow);
-        actionCut->setObjectName(QStringLiteral("actionCut"));
+        actionLesson = new QAction(MainWindow);
+        actionLesson->setObjectName(QStringLiteral("actionLesson"));
+        actionLesson->setCheckable(true);
+        actionLesson->setChecked(true);
+        actionLesson->setEnabled(false);
+        actionStudent = new QAction(MainWindow);
+        actionStudent->setObjectName(QStringLiteral("actionStudent"));
+        actionStudent->setCheckable(true);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -88,26 +78,6 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-
-        verticalLayout->addWidget(pushButton_2);
-
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-
-        verticalLayout->addWidget(pushButton);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout->addItem(verticalSpacer);
-
-
-        horizontalLayout->addLayout(verticalLayout);
-
         textEdit = new QTextEdit(centralWidget);
         textEdit->setObjectName(QStringLiteral("textEdit"));
 
@@ -121,21 +91,21 @@ public:
 
         verticalLayout_7->addWidget(label);
 
-        textEdit_3 = new QTextEdit(centralWidget);
-        textEdit_3->setObjectName(QStringLiteral("textEdit_3"));
-        textEdit_3->setMaximumSize(QSize(16777215, 50));
+        word = new QTextEdit(centralWidget);
+        word->setObjectName(QStringLiteral("word"));
+        word->setMaximumSize(QSize(16777215, 50));
 
-        verticalLayout_7->addWidget(textEdit_3);
+        verticalLayout_7->addWidget(word);
 
-        pushButton_3 = new QPushButton(centralWidget);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
-        verticalLayout_7->addWidget(pushButton_3);
+        verticalLayout_7->addWidget(pushButton_2);
 
-        pushButton_4 = new QPushButton(centralWidget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
 
-        verticalLayout_7->addWidget(pushButton_4);
+        verticalLayout_7->addWidget(pushButton);
 
         textEdit_2 = new QTextEdit(centralWidget);
         textEdit_2->setObjectName(QStringLiteral("textEdit_2"));
@@ -152,6 +122,10 @@ public:
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 1042, 21));
+        menuFile = new QMenu(menuBar);
+        menuFile->setObjectName(QStringLiteral("menuFile"));
+        menuView = new QMenu(menuBar);
+        menuView->setObjectName(QStringLiteral("menuView"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -159,8 +133,14 @@ public:
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
-        QWidget::setTabOrder(pushButton_2, textEdit);
         QWidget::setTabOrder(textEdit, textEdit_2);
+
+        menuBar->addAction(menuFile->menuAction());
+        menuBar->addAction(menuView->menuAction());
+        menuFile->addAction(actionOpen);
+        menuFile->addAction(actionSave);
+        menuView->addAction(actionLesson);
+        menuView->addAction(actionStudent);
 
         retranslateUi(MainWindow);
 
@@ -171,18 +151,14 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         actionOpen->setText(QApplication::translate("MainWindow", "Open", 0));
-        actionNew->setText(QApplication::translate("MainWindow", "New", 0));
-        actionOpen_2->setText(QApplication::translate("MainWindow", "Open", 0));
         actionSave->setText(QApplication::translate("MainWindow", "Save", 0));
-        actionClose->setText(QApplication::translate("MainWindow", "Close", 0));
-        actionCopy->setText(QApplication::translate("MainWindow", "Copy", 0));
-        actionPaste->setText(QApplication::translate("MainWindow", "Paste", 0));
-        actionCut->setText(QApplication::translate("MainWindow", "Cut", 0));
+        actionLesson->setText(QApplication::translate("MainWindow", "lesson", 0));
+        actionStudent->setText(QApplication::translate("MainWindow", "student", 0));
+        label->setText(QApplication::translate("MainWindow", "Definition Editor", 0));
         pushButton_2->setText(QApplication::translate("MainWindow", "View Definition", 0));
         pushButton->setText(QApplication::translate("MainWindow", "Save Definition", 0));
-        label->setText(QApplication::translate("MainWindow", "Definition Editor", 0));
-        pushButton_3->setText(QApplication::translate("MainWindow", "Open File", 0));
-        pushButton_4->setText(QApplication::translate("MainWindow", "Save File", 0));
+        menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
+        menuView->setTitle(QApplication::translate("MainWindow", "View", 0));
     } // retranslateUi
 
 };
