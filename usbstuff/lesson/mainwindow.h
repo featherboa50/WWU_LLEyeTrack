@@ -27,14 +27,13 @@ namespace Ui {
     class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
 
     Q_OBJECT
 
   public:
 
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow( QWidget *parent = 0 );
     ~MainWindow();
 
   private slots:
@@ -45,18 +44,20 @@ class MainWindow : public QMainWindow
 
     void on_actionOpen_triggered();
 
-    void resizeEvent(QResizeEvent* event);
+    void resizeEvent( QResizeEvent* event );
 
     void collectCoordinates();
+
+    void saveFirstImage();
+
+    coordinate getCoordinatePair();
         // openCV call to gather coordinate data
 
     void on_actionSave_triggered();
 
-    void on_actionLesson_triggered();
+    void on_modeSwitch_toggled(bool arg1);
 
-    void on_actionStudent_triggered();
-
-  private:
+private:
 
     Ui::MainWindow *ui;
 
@@ -67,6 +68,8 @@ class MainWindow : public QMainWindow
     QMap< QPair<int,int>, QString > coordinateMapping;
 
     GuiMode_t GuiMode;
+
+    bool editorMode;
 
 
 };
