@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QTextEdit" name="textEdit"/>
+       <widget class="QTextEdit" name="lessonTextBox"/>
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -28,21 +28,21 @@
            <number>8</number>
           </property>
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="editorLabel">
             <property name="text">
              <string>Definition Editor</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="viewDefButton">
             <property name="text">
              <string>View Definition</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="saveDefButton">
             <property name="text">
              <string>Save Definition</string>
             </property>
@@ -51,17 +51,20 @@
          </layout>
         </item>
         <item>
-         <widget class="QTextEdit" name="word">
+         <widget class="QTextEdit" name="wordBox">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
             <height>50</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="textEdit_2"/>
+         <widget class="QTextEdit" name="defnBox"/>
         </item>
        </layout>
       </item>
@@ -89,8 +92,7 @@
     <property name="title">
      <string>View</string>
     </property>
-    <addaction name="actionLesson"/>
-    <addaction name="actionStudent"/>
+    <addaction name="modeSwitch"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -106,41 +108,27 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen">
    <property name="text">
-    <string>Open</string>
+    <string>Open...</string>
    </property>
   </action>
   <action name="actionSave">
    <property name="text">
-    <string>Save</string>
+    <string>Save...</string>
    </property>
   </action>
-  <action name="actionLesson">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>lesson</string>
-   </property>
-  </action>
-  <action name="actionStudent">
+  <action name="modeSwitch">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>student</string>
+    <string>Editor Mode</string>
    </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>textEdit</tabstop>
-  <tabstop>textEdit_2</tabstop>
+  <tabstop>lessonTextBox</tabstop>
+  <tabstop>defnBox</tabstop>
  </tabstops>
  <resources/>
  <connections/>
