@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
+
 #define $MW MainWindow::
 
 
@@ -17,11 +18,19 @@ $MW MainWindow( QWidget *parent ) :
 
     // open & read default dictionary
 
+    QString path = QCoreApplication::applicationDirPath();
+    path.append("/EyetrackerDictionary.txt");
+    QFile dictFile( "//stuhome/home/mccormk5/Desktop/CS_493/WWU_LLEyeTrack/usbstuff/lesson/EyetrackerDictionary.txt" );
+
+    if( !dictFile.open( QIODevice::ReadOnly ) )
+        ui-> lessonTextBox-> append( "Failed to open dictionary file.\n" );
+    else
+        readDictionary( dictFile );
+
+    showFullScreen();
+
     editorMode = false;
     on_modeSwitch_toggled( false );
-    //ui-> wordBox-> setReadOnly( true );
-
-    collectCoordinates();
 }
 
 
@@ -32,21 +41,22 @@ $MW ~MainWindow(){
 
 // Finds the highlighted string in the dictionary and displays the definition
 void $MW on_viewDefButton_clicked(){
-    ui-> wordBox-> setText( ui-> lessonTextBox-> textCursor().selectedText() );
-    // TODO: extract definition:
-    ui-> defnBox-> setText( "Definition should show up" );
+    auto word = ui-> lessonTextBox-> textCursor().selectedText();
+    ui-> wordBox-> setText( word );
+    ui-> defnBox-> setText( dictionary[word] );
 }
 
 
 // Save the definition into the DB
 void $MW on_saveDefButton_clicked(){
-    // TODO: save definition
+    auto word          = ui-> lessonTextBox-> textCursor().selectedText();
+    dictionary[ word ] = ui-> defnBox-> toPlainText();
 }
 
 
 void $MW resizeEvent(QResizeEvent* event){
     QMainWindow::resizeEvent( event ); // Call super
-    collectCoordinates();              // Recollect with new x/y values
+    //collectCoordinates();              // Recollect with new x/y values
 }
 
 
@@ -79,9 +89,6 @@ coordinate $MW getCoordinatePair(){
 
     return coordinate( 0, 0, 0, 0 ); // placeholder
 }
-
-
-
 
 
 // Opens a file and displays it in the main text area
@@ -155,4 +162,30 @@ void $MW on_modeSwitch_toggled( bool inEditorMode ){
     ui-> defnBox      -> setReadOnly( !inEditorMode );
 
     editorMode = inEditorMode;
+}
+
+
+void $MW readDictionary( QFile& dict ){
+    int x = 0;
+    while( !dict.atEnd() ){
+        QString     line = dict.readLine();
+        QStringList splt = line.split("\t");
+        if( splt.size() < 2 )
+            continue;
+        dictionary.insert( splt.at(0), splt.at(1) );
+    }
+}
+
+
+void MainWindow::on_minimize_triggered(){
+    showMinimized();
+}
+
+
+void MainWindow::on_close_triggered(){
+    QMessageBox::StandardButton reply;
+      reply = QMessageBox::question(this, "Closing application", "Are you sure you want to close?",
+                                    QMessageBox::Yes | QMessageBox::No);
+      if (reply == QMessageBox::Yes)
+        QApplication::quit();
 }

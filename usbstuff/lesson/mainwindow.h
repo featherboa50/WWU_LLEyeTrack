@@ -7,6 +7,7 @@
 #include <QPair>
 #include <QString>
 #include <QStringList>
+#include <QFile>
 
 typedef enum {STUDENT,EDITOR} GuiMode_t;
 
@@ -56,6 +57,12 @@ class MainWindow : public QMainWindow {
     void on_actionSave_triggered();
 
     void on_modeSwitch_toggled(bool arg1);
+
+    void readDictionary( QFile& dict );
+
+    void on_minimize_triggered();
+
+    void on_close_triggered();
 
 private:
 
